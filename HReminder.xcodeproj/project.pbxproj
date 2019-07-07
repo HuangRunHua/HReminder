@@ -8,12 +8,18 @@
 
 /* Begin PBXBuildFile section */
 		0489F4A822D1C0960060EACE /* HReminder.h in Headers */ = {isa = PBXBuildFile; fileRef = 0489F4A622D1C0960060EACE /* HReminder.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0489F4B022D1C0F00060EACE /* HReminderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0489F4AE22D1C0F00060EACE /* HReminderViewController.swift */; };
+		0489F4B122D1C0F00060EACE /* HReminderViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0489F4AF22D1C0F00060EACE /* HReminderViewController.xib */; };
+		0489F4DD22D1D6690060EACE /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0489F4DC22D1D6690060EACE /* RoundedButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		0489F4A322D1C0960060EACE /* HReminder.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = HReminder.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0489F4A622D1C0960060EACE /* HReminder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HReminder.h; sourceTree = "<group>"; };
 		0489F4A722D1C0960060EACE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0489F4AE22D1C0F00060EACE /* HReminderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HReminderViewController.swift; sourceTree = "<group>"; };
+		0489F4AF22D1C0F00060EACE /* HReminderViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HReminderViewController.xib; sourceTree = "<group>"; };
+		0489F4DC22D1D6690060EACE /* RoundedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -48,6 +54,9 @@
 			children = (
 				0489F4A622D1C0960060EACE /* HReminder.h */,
 				0489F4A722D1C0960060EACE /* Info.plist */,
+				0489F4AE22D1C0F00060EACE /* HReminderViewController.swift */,
+				0489F4AF22D1C0F00060EACE /* HReminderViewController.xib */,
+				0489F4DC22D1D6690060EACE /* RoundedButton.swift */,
 			);
 			path = HReminder;
 			sourceTree = "<group>";
@@ -95,6 +104,7 @@
 				TargetAttributes = {
 					0489F4A222D1C0960060EACE = {
 						CreatedOnToolsVersion = 11.0;
+						LastSwiftMigration = 1100;
 					};
 				};
 			};
@@ -121,6 +131,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0489F4B122D1C0F00060EACE /* HReminderViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -131,6 +142,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0489F4B022D1C0F00060EACE /* HReminderViewController.swift in Sources */,
+				0489F4DD22D1D6690060EACE /* RoundedButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -260,6 +273,7 @@
 		0489F4AC22D1C0960060EACE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = YRB62S584T;
@@ -276,14 +290,17 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.TimeProducer.HReminder;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SUPPORTS_UIKITFORMAC = NO;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
 		0489F4AD22D1C0960060EACE /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = YRB62S584T;
@@ -300,8 +317,9 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.TimeProducer.HReminder;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SUPPORTS_UIKITFORMAC = NO;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
