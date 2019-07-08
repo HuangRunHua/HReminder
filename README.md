@@ -16,7 +16,7 @@ Here are some screenshots showing what you can build with HReminder.
 You can only clone this framework and add it to your project🤪
 
 ## Usage
-It's very simple to use this framwork, just a few steps.
+It's very simple to use this framework, just a few steps.
 ### The Basics
 HReminder displays a Button called `reminderButton`, specially it is not a `Label`. This framework provides a standard type called `HReminderViewController`. I have provided several interfaces that allow you to modify the color of the button and the title of the button. You can also choose your actions after clicking the button.
 
