@@ -17,11 +17,15 @@ public class HReminderViewController: UIViewController {
     // 设置Reminder视图的标题
     private var reminderTitle: String = "Start from beginning"
     // 设置Reminder视图的背景颜色
-    private var reminderBackgroundColor: UIColor = .systemGreen
+    private var reminderBackgroundColor: UIColor = .green
     // 设置Reminder的宽度
     private var widthOfReminder: CGFloat = 140.0
     // 设置Reminder的高度
     private var heightOfReminder: CGFloat = 40.0
+    // 设置self.view的顶部约束
+    private var viewOfTopConstrian: NSLayoutConstraint!
+    // 用来储存父视图
+    private var superView: UIView?
     
     @IBOutlet weak var reminderButton: RoundedButton! {
         didSet {
@@ -51,20 +55,45 @@ public class HReminderViewController: UIViewController {
     }
     
     /**
-     @showInView( superview: UIView )
-     显示Reminder视图
+     *@showInView( superview: UIView )
+     *显示Reminder视图
      */
     public func showInView(superview: UIView) {
-        // 判断当前控件是否有父视图，即控件是否添加到视图中
+        
+        self.view.translatesAutoresizingMaskIntoConstraints = false
+        
         if !isReminderExist {
             isReminderExist = true
+            // 判断当前控件是否有父视图，即控件是否添加到视图中
             if self.view.superview == nil {
                 superview.addSubview(self.view)
             }
-            // 调整视图到屏幕之外
-            self.view.center = CGPoint(x: superview.center.x,y: -200)
-            self.view.frame = CGRect(x: self.view.frame.origin.x, y: self.view.frame.origin.y, width: widthOfReminder, height: heightOfReminder)
-            reminderAnimate(Y: superview.frame.origin.y + 150)
+            if self.superView != nil {
+                viewOfTopConstrian.constant = 16
+            } else {
+                self.superView = superview
+                /**
+                 *设置自定义视图的初始约束，并调整视图到屏幕之外
+                 *这里对视图的顶部的约束采用的是topMargin，是为了适配视图里面有导航栏的情况
+                 *使用self.view.center.x = superview.center.x的原因是为了让视图一开始就在父视图的中间
+                 */
+                self.view.center.x = superview.center.x
+                viewOfTopConstrian = NSLayoutConstraint(item: self.view as Any, attribute: .top, relatedBy: .equal, toItem: superview, attribute: .topMargin, multiplier: 1, constant: 16)
+                superview.addConstraint(viewOfTopConstrian)
+                
+                let viewOfXConstrian = NSLayoutConstraint(item: self.view as Any, attribute: .centerX, relatedBy: .equal, toItem: superview, attribute: .centerX, multiplier: 1, constant: 0)
+                superview.addConstraint(viewOfXConstrian)
+                
+                let viewOfHeightContrain = NSLayoutConstraint(item: self.view as Any, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 0, constant: 40)
+                self.view.addConstraint(viewOfHeightContrain)
+                
+                let viewOfWidthContrain = NSLayoutConstraint(item: self.view as Any, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 0, constant: 140)
+                self.view.addConstraint(viewOfWidthContrain)
+            }
+            UIView.animate(withDuration: 0.25, animations: {() in
+                superview.layoutIfNeeded()
+            })
+            
         }
     }
     
@@ -74,7 +103,10 @@ public class HReminderViewController: UIViewController {
      */
     public func hideInView() {
         isReminderExist = false
-        reminderAnimate(Y: -200)
+        viewOfTopConstrian.constant = -200
+        UIView.animate(withDuration: 0.25, animations: {() in
+            self.superView!.layoutIfNeeded()
+        })
     }
     
     /**
@@ -91,17 +123,6 @@ public class HReminderViewController: UIViewController {
     public func setReminderBackgroundColor(color: UIColor) {
         self.reminderBackgroundColor = color
     }
-    
-    /**
-     @reminderAnimate( Y cgfloat: CGFloat )
-     设置Reminder视图出现的动画，这里是从上到下，类似Twitter
-     */
-    func reminderAnimate(Y cgfloat: CGFloat) {
-        UIView.animate(withDuration: 0.5, delay: 0.0, options: UIView.AnimationOptions.curveEaseInOut, animations: {() -> Void in
-            self.view.center = CGPoint(x: self.view.center.x, y: cgfloat)
-        }, completion: nil)
-    }
-    
 }
 
 /**
