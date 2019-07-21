@@ -4,24 +4,36 @@ HReminder is a Cocoa Touch framework and manages button displayed at the top of 
 It has an interface similar to the button displayed by Medium which Medium app uses this button to reminder reader to 'Start from beginning'. It now supports both the iPhone and the iPad.
 
 Here are some screenshots showing what you can build with HReminder.
-![example photo](https://github.com/HuangRunHua/HReminder/blob/master/IMG_C6F2E1A6B76F-1.jpeg)
+![example photo 1](https://github.com/HuangRunHua/HReminder/blob/master/IMG_C6F2E1A6B76F-1.jpeg)
+
+And it also supports all device orientations.
+![example photo 2](https://github.com/HuangRunHua/HReminder/blob/master/PICSEW_F475.JPEG)
+
+Here are some screenshots showing how it looks like on iPad.
+![example photo 3](https://github.com/HuangRunHua/HReminder/blob/master/PICSEW_F41A.JPEG)
+
+And landscape left may looks like:
+![example photo 4](https://github.com/HuangRunHua/HReminder/blob/master/PICSEW_05A5.JPEG)
 
 ## Requirements
 - Xcode 11 and later
 - iOS 13 and later
 - Swift 5.0 and later
-- Device Orientation: Portrait
 
 ## Installation
 You can only clone this framework and add it to your project🤪
 
 ## Usage
-It's very simple to use this framework, just a few steps.
+It's very simple to use this framework, just a few steps. First, you need to add this line at the top of your file:
+```swift
+import HReminder
+```
+
 ### The Basics
 HReminder displays a Button called `reminderButton`, specially it is not a `Label`. This framework provides a standard type called `HReminderViewController`. I have provided several interfaces that allow you to modify the color of the button and the title of the button. You can also choose your actions after clicking the button.
 
 ### Displaying Button
-To display this button you first need to create a HReminderViewController.
+To display this button you need to create a HReminderViewController.
 ```swift
 var reminder = HReminderViewController()
 ```
