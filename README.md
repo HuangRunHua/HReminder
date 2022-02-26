@@ -72,8 +72,6 @@ func ReminderViewClose() {
 }
 ```
 
-## Last but not least
-I will add more features to this framework.🤗
 
 
 
